@@ -7,10 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMovieDetails(MOVIE_ID);
 });
 
-x;
+const getUrlVars = () => {
+  let vars = {};
+  window.location.href.replace(
+    /[?&]+([^=&]+)=([^&]*)/gi,
+    function (m, key, value) {
+      vars[key] = value;
+    }
+  );
+  return vars;
+};
 
 const getMovieDetails = (movieId) => {
-  console.log(movieId);
   const url = `${URL_PATH}/3/movie/${movieId}?api_key=${API_KEY}&language=es-ES`;
 
   return fetch(url)
